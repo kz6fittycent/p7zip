@@ -34,7 +34,9 @@ parts:
     source: https://github.com/kz6fittycent/p7zip
     source-type: git  
     plugin: make
-    
+    make-parameters:
+      - usr/local/lib
+      
 #    override-pull: |
 #      snapcraftctl pull
 #      snapcraftctl set-version "$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"
