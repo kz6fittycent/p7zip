@@ -8,16 +8,17 @@ description: |
 confinement: strict
 license: GPL-2.1
 compression: lzo
+base: core20
 
 assumes:
   - command-chain
   
 apps:
   p7zip-desktop:
-    command: desktop-launch $SNAP/usr/local/bin/7zDesktop
+    command: usr/local/bin/7zDesktop
     command-chain: 
       - bin/homeishome-launch       
-#    desktop: usr/share/applications/7zFM.desktop
+#    desktop: usr/share/applications/pz7zip.desktop
     plugs:
       - x11
       - wayland 
@@ -55,24 +56,13 @@ parts:
   wxwidgets-3-0-gtk2:
   
   p7zip-desktop:
-    plugin: dump 
-    source: .
+    plugin: make
+    source: https://github.com/ErnyTech/p7zip
+    source-type: git
     
     override-pull: |
       snapcraftctl pull
       snapcraftctl set-version "$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"
-      
-    override-build: |
-      rm -rf "$SNAPCRAFT_PART_INSTALL/*"
-      make 7zFM 7zG
-      make install DEST_DIR="$SNAPCRAFT_PART_INSTALL"
-      mkdir -p "$SNAPCRAFT_PART_INSTALL/usr/share/applications"
-      cp 7zFM.desktop "$SNAPCRAFT_PART_INSTALL/usr/share/applications/7zFM.desktop"
-      cp 7zDesktop "$SNAPCRAFT_PART_INSTALL/usr/local/bin/7zDesktop"
-      chmod +x "$SNAPCRAFT_PART_INSTALL/usr/local/bin/7zDesktop"
-      chmod +x "$SNAPCRAFT_PART_INSTALL/usr/local/bin/p7zipForFilemanager"
-      install -dm755 "$SNAPCRAFT_PART_INSTALL/usr/local/lib/p7zip/help"
-      cp -r DOC/MANUAL/* "$SNAPCRAFT_PART_INSTALL/usr/local/lib/p7zip/help"
       
     build-packages:
       - gcc
