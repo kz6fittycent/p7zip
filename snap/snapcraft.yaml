@@ -1,5 +1,6 @@
 name: p7zip-desktop
-adopt-info: p7zip-desktop
+#adopt-info: p7zip-desktop
+version: "git"
 summary: 7Zip Desktop
 grade: stable
 description: |
@@ -34,9 +35,9 @@ parts:
     source: https://github.com/kz6fittycent/p7zip
     source-type: git
     
-    override-pull: |
-      snapcraftctl pull
-      snapcraftctl set-version "$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"
+#    override-pull: |
+#      snapcraftctl pull
+#      snapcraftctl set-version "$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"
       
     build-packages:
       - gcc
