@@ -57,7 +57,7 @@ parts:
   
   p7zip-desktop:
     plugin: make
-    source: https://github.com/ErnyTech/p7zip
+    source: https://github.com/kz6fittycent/p7zip
     source-type: git
     
     override-pull: |
