@@ -1,6 +1,6 @@
 name: p7zip-desktop
 #adopt-info: p7zip-desktop
-version: "git"
+version: "git" #just until PR to upstream
 summary: 7Zip Desktop
 grade: stable
 description: |
@@ -18,7 +18,7 @@ apps:
   p7zip-desktop:
     extensions:
       - gnome-3-38  
-    command: bin/7zDesktop
+    command: 7zDesktop
     command-chain: 
       - bin/homeishome-launch       
     plugs:
@@ -55,6 +55,10 @@ parts:
       - libcanberra-gtk-module
       - qt5-style-plugins
       
+  launcher:
+    plugin: dump
+    source: scripts
+     
   homeishome-launch:
     plugin: nil
     stage-snaps:
