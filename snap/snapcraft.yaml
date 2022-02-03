@@ -18,7 +18,7 @@ apps:
   p7zip-desktop:
     extensions:
       - gnome-3-38  
-    command: usr/local/bin/7zDesktop
+    command: bin/7zDesktop
     command-chain: 
       - bin/homeishome-launch       
     plugs:
@@ -31,9 +31,9 @@ apps:
     
 parts:
   p7zip-desktop:
-    plugin: make
     source: https://github.com/kz6fittycent/p7zip
-    source-type: git
+    source-type: git  
+    plugin: make
     
 #    override-pull: |
 #      snapcraftctl pull
@@ -46,6 +46,7 @@ parts:
       - libwxgtk3.0-gtk3-dev
       - yasm
       - python
+      
     stage-packages:
       - overlay-scrollbar
       - overlay-scrollbar-gtk2
