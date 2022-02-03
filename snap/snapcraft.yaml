@@ -15,10 +15,11 @@ assumes:
   
 apps:
   p7zip-desktop:
+    extensions:
+      - gnome-3-38  
     command: usr/local/bin/7zDesktop
     command-chain: 
       - bin/homeishome-launch       
-#    desktop: usr/share/applications/pz7zip.desktop
     plugs:
       - x11
       - wayland 
@@ -27,34 +28,7 @@ apps:
       - home
       - removable-media
     
-environment:
-  GTK_PATH: $SNAP/lib/gtk-2.0
-  GTK_DATA_PREFIX: $SNAP
-  XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
-  QT_QPA_PLATFORMTHEME: gtk2
-  
-plugs:
-  icon-themes:
-    interface: content
-    target: $SNAP/data-dir/icons
-    default-provider: gtk-common-themes   
-  sound-themes:
-    interface: content
-    target: $SNAP/data-dir/sounds
-    default-provider: gtk-common-themes
-  gtk-2-engines:
-    interface: content
-    target: $SNAP/lib/gtk-2.0
-    default-provider: gtk2-common-themes:gtk-2-engines
-  gtk-2-themes:
-    interface: content
-    target: $SNAP/share/themes
-    default-provider: gtk2-common-themes:gtk-2-themes
-
 parts:
-  desktop-gtk2:
-  wxwidgets-3-0-gtk2:
-  
   p7zip-desktop:
     plugin: make
     source: https://github.com/kz6fittycent/p7zip
