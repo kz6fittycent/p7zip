@@ -42,7 +42,7 @@ parts:
       - gcc
       - g++
       - make
-      - libwxgtk3.0-dev
+      - libwxgtk3.0-gtk3-dev
       - yasm
       - python
     stage-packages:
